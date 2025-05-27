@@ -7,7 +7,7 @@ from llama_index.core import Settings
 
 def initialize_settings():
     logging.basicConfig(
-        stream=sys.stdout, level=logging.INFO
+        stream=sys.stdout, level=logging.WARNING
     )  # logging.DEBUG for more verbose output
     logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
