@@ -1,5 +1,5 @@
 from mock_settings import initialize_mock_settings, print_token_counts
-from index import get_index
+from index import build_index
 from documents import get_documents
 from settings import initialize_settings
 
@@ -11,7 +11,7 @@ def run_query(query, use_mock = False):
         initialize_settings()
 
     documents = get_documents()
-    index = get_index(documents)
+    index = build_index(documents)
     query_engine = index.as_query_engine()
     answer = query_engine.query(query)
 

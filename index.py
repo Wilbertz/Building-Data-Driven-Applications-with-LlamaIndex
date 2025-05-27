@@ -5,7 +5,7 @@ from llama_index.core import StorageContext, load_index_from_storage, VectorStor
 INDEX_ID = "vector"
 PERSIST_DIR = "./index_cache"
 
-def get_index(documents):
+def build_index(documents):
     try:
         storage_context = StorageContext.from_defaults(persist_dir=PERSIST_DIR)
         index = load_index_from_storage(storage_context, INDEX_ID)
