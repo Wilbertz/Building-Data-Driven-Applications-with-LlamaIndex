@@ -1,3 +1,2 @@
 [logger]
 level = "warning"
-file = "streamlit_app.log"
