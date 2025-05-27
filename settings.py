@@ -5,13 +5,16 @@ from llama_index.llms.azure_openai import AzureOpenAI
 from llama_index.embeddings.azure_openai import AzureOpenAIEmbedding
 from llama_index.core import Settings
 
-def initialize_settings():
+def initialize_settings(azure_api_key=None):
     logging.basicConfig(
         stream=sys.stdout, level=logging.WARNING
     )  # logging.DEBUG for more verbose output
     logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
-    api_key = os.getenv("AZURE_OPEN_API_KEY")
+    if azure_api_key is None:
+        api_key = os.getenv("AZURE_OPEN_API_KEY")
+    else:
+        api_key = azure_api_key
     azure_endpoint = "https://haral-m9l329ou-eastus2.cognitiveservices.azure.com/"
     api_version = "2024-12-01-preview"
 
