@@ -1,0 +1,3 @@
+[logger]
+level = "warn"
+file = "streamlit_app.log"
