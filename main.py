@@ -1,27 +1,30 @@
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
-
 from mock_settings import initialize_mock_settings, print_token_counts
+from index import get_index
+from documents import get_documents
 from settings import initialize_settings
 
-#initialize_settings()
-token_counter = initialize_mock_settings()
+def run_query(query, use_mock = False):
+    token_counter = None
+    if use_mock:
+        token_counter = initialize_mock_settings()
+    else:
+        initialize_settings()
 
-documents = SimpleDirectoryReader(
-    input_files=["./documents/dk-KPMG-Annual-report 2024_Digital-final.pdf"]
-    #input_files=["./documents/sample_document1.txt"]
-).load_data()
+    documents = get_documents()
+    index = get_index(documents)
+    query_engine = index.as_query_engine()
+    answer = query_engine.query(query)
 
-index = VectorStoreIndex.from_documents(documents)
+    # print(answer.get_formatted_sources())
+    print("query was:", query)
+    print("answer was:", answer)
 
-query = "What are famous buildings in Rome?"
-query_engine = index.as_query_engine()
-answer = query_engine.query(query)
+    if token_counter:
+        print_token_counts(token_counter)
 
-# print(answer.get_formatted_sources())
-# print("query was:", query)
-# print("answer was:", answer)
-
-print_token_counts(token_counter)
+if __name__ == "__main__":
+    run_query("In which month was the annual company day celebrated?")
 
 
 
