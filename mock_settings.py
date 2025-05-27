@@ -25,3 +25,9 @@ def initialize_mock_settings():
 
     return token_counter
 
+def print_token_counts(token_counter):
+    print(token_counter.prompt_llm_token_count)
+    print(token_counter.completion_llm_token_count)
+    # print(token_counter.embedding_token_counts)
+    print(token_counter.total_llm_token_count)
+
