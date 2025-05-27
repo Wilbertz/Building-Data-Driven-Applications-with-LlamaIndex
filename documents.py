@@ -1,4 +1,4 @@
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
+from llama_index.core import SimpleDirectoryReader
 
 def get_documents():
     documents = SimpleDirectoryReader(

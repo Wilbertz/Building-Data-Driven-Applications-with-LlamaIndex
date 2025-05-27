@@ -1,4 +1,3 @@
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 from mock_settings import initialize_mock_settings, print_token_counts
 from index import get_index
 from documents import get_documents
@@ -24,7 +23,7 @@ def run_query(query, use_mock = False):
         print_token_counts(token_counter)
 
 if __name__ == "__main__":
-    run_query("In which month was the annual company day celebrated?")
+    run_query("Is there a fair representation of women in the Board of Directors?")
 
 
 
